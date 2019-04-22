@@ -1,0 +1,181 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+
+.sm-text {
+    font-size: 12px;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.right-align {
+    text-align: right;
+    margin-right: auto;
+}
+
+.flex-container {
+    display: flex;
+    list-style: none;
+    padding: 0 10px;
+    margin: 0;
+}
+
+    #header.sticky #sticky-wrapper {
+        border: 1px solid rgba(238,238,238,1);
+        border-radius: 5px;
+        color: rgba(117,117,117,1);
+        box-shadow: 5px 10px 20px -20px rgba(85,172,238,1);
+    }
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.flex-centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+}
+
+.double-column {
+    flex: 2 0 0;
+}
+
+/* STICKY HEADER */
+
+.sticky-header {
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 100;
+    background: #ffffff;
+}
+
+.sticky-header .flex-container:first-child > div {
+    margin-right: auto;
+}
+
+.sticky-header .flex-container:last-child > div {
+    margin-left: auto;
+}
+
+/* SIDE NAVIGATION */
+.side-nav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+    .side-nav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+        .side-nav a:hover {
+            color: #f1f1f1;
+        }
+
+    .side-nav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        text-align: right;
+    }
+
+@media screen and (max-height: 450px) {
+    .side-nav {
+        padding-top: 15px;
+    }
+
+        .side-nav a {
+            font-size: 18px;
+        }
+}
+
+
+#main-carousel {
+    width: 100%;
+    max-height: 700px;
+    overflow: hidden;
+}
+
+
+.coloured-panel {
+    width: 100%;
+    padding: 30px;
+    background-color: #f1f1f1;
+}
+
+.separated-list-item {
+    border-bottom: 1px solid #dfddd9;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.content-image {
+    width: 100%;
+}
+
+.article-vertical {
+    margin-bottom: 60px;
+}
+
+.side-container {
+    margin-bottom: 30px;
+}

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Fine Print - @ViewData["Title"]</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/main.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/main.css" />
+    </environment>
+
+    <script src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
+    <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/knockout-3.5.0.js")"></script>
+    <script src="@Url.Content("~/js/global.js")"></script>
+    <script src="@Url.Content("~/js/blogger.js")"></script>
+</head>
+<body>
+    <header id="header">
+        <div id="sticky-wrapper" class="sticky-header">
+            <ul class="flex-container flex-center">
+                <li class="flex-left-align">
+                    <ul class="icons">
+                        <li id="side-nav-button"><a href="#" class="fa fa-bars"></a></li>
+                    </ul>
+                </li>
+                <li id="header-logo" class="flex-centered centered-text">
+                    <h1>THE FINE PRINT</h1>
+                    <span class="avatar"></span>
+                    <p class="header-subtext">Under the surface. Above the noise.</p>
+                </li>
+                <li class="flex-right-align">
+                    <ul class="icons">
+                        <li><a href="#" class="fa-search">Search</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div id="side-bar" class="side-nav">
+        <a href="#" id="close-nav-button" class="closebtn">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    @RenderBody()
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="copyright">
+            <li>© THE FINE PRINT</li>
+            <li>
+                <script type="text/javascript">document.write(new Date().getFullYear());</script>
+            </li>
+        </ul>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
