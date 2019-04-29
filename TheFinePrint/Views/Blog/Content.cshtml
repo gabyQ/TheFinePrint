@@ -3,155 +3,58 @@
     ViewData["Title"] = "Content";
 }
 
+<span id="active-post" hidden>@ViewData["ContentId"]</span>
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="post_img">
-                <img src="images/b3.jpg" alt="Card image cap">
+                <img data-bind="attr: {src: activePost.imageUrl}" alt="The Fine Print Image" class="content-image">
             </div>
         </div>
     </div>
 </div>
 
-<div class="container mb-65px">
+<div class="container">
     <div class="row">
-        <div class="col-lg-10 offset-lg-1 mt-10px">
-            <div class="blog_posts stander_blog_single_post">
+            <div>
                 <article>
-                    <h3 class="post_title">
-                        <a href="blog-single-post.html">All the world's waiting for you</a>
-                    </h3>
+                    <h1 class="post_title">
+                        <a data-bind="text: activePost.title"></a>
+                    </h1>
                     <div class="post_meta_top">
                         <span class="post_meta_category">
-                            <a href="blog-single-post.html">Crispy Food</a>
+                            <a data-bind="text: activePost.category, attr: { href: activePost.categoryUrl }"></a>
                         </span>
-                        <span class="post_meta_date">Nov 17, 2020</span>
+                        <span data-bind="text: activePost.publishedDate"></span>
                     </div>
                     <div class="post_content">
-                        <p>
-                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum
-                            auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit
-                            amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec
-                            tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat
-                            auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                            per inceptos himenaeos. Nullam ac urna eu felis dapibus condimentum sit amet a augue.
-                            Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam
-                            pharetra, erat sed fermentum feugiat, velit mauris egestas quam.
-                        </p>
-
-                        <blockquote>
-                            “ Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-                            Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                            Sed ut imperdiet nisi. Proin condimentum fermentum nunc. ”
-                        </blockquote>
-
-                        <div class="row">
-                            <div class="col-md-7">
-                                <p>
-                                    Carried nothing on warrant towards. Polite in of in oh needed itself silent course.
-                                    Whatever may scarcely had. Assistance travelling especially prosperous appearance
-                                    mr no itself celebrated. Wanted easily in my called formed suffer. Songs
-                                    hoped sense as taken ye mirth at. Believe fat considered projection how six drawing pursuit minutes
-                                    far. Same do seen head am part it dear open to.
-                                </p>
-                                <p>
-                                    Folly words widow one downs few age every seven. If miss part by fact he park
-                                    just shew. Discovered had get considered projection who favourable. Necessary
-                                    up knowledge it tolerably. Unwilling departure education is be dashwoods or an.
-                                </p>
-                            </div>
-                            <div class="col-md-5">
-                                <img class="mb-35px" src="images/25.jpg" alt="Card image cap">
-                            </div>
-                        </div>
-                        <p>
-                            Folly words widow one downs few age every seven. If miss part by fact he park just shew.
-                            Discovered had get considered projection who favourable. Necessary up knowledge it
-                            tolerably. Unwilling departure education is be dashwoods or an. Use off agreeable
-                            law unwilling sir deficient curiosity instantly.
-                        </p>
+                        <p data-bind="html: activePost.content"></p>
                     </div>
-                    <div class="post_meta_bottom my-30px">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6 text-center text-lg-left mb-10px mb-lg-0">
-                                <ul class="blog-post-tags">
-                                    <li>
-                                        <a href="#" rel="tag">Branding</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" rel="tag">Photography</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6 text-center text-lg-right">
-                                <a class="post_read_more_btn mr-2" href="#">
-                                    <i class="far fa-long-arrow-left fa-lg mr-2" aria-hidden="true"></i> Previous Post
-                                </a>
-                                <a class="post_read_more_btn ml-2" href="#">
-                                    Next Post
-                                    <i class="far fa-long-arrow-right fa-lg ml-1" aria-hidden="true"></i>
-                                </a>
-                            </div>
+                    <div>
+                        <div class="col-lg-6 text-center text-lg-left mb-10px mb-lg-0">
+                            <ul class="blog-post-tags">
+                                <li>
+                                    <a href="#" rel="tag">Branding</a>
+                                </li>
+                                <li>
+                                    <a href="#" rel="tag">Photography</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-right">
+                            <a class="post_read_more_btn mr-2" href="#">
+                                <i class="far fa-long-arrow-left fa-lg mr-2" aria-hidden="true"></i> 
+                                Previous Post
+                            </a>
+                            <a class="post_read_more_btn ml-2" href="#">
+                                Next Post
+                                <i class="far fa-long-arrow-right fa-lg ml-1" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
                     <div class="separator-line"></div>
                 </article>
-                <div class="blog-post-comments">
-                    <div class="comments-area">
-                        <h5 class="comment-title">1 thought on “All the world's waiting for you”</h5>
-
-                        <ol class="comment-list">
-                            <li class="comment" id="comment-1">
-                                <article id="div-comment-1" class="comment-body">
-                                    <header class="comment-meta">
-                                        <img class="avatar" src="http://placehold.it/75x75/eee" alt="img" width="75" height="75">
-                                        <cite>
-                                            <a href="#">Anna Watson </a>
-                                        </cite>
-                                        <a href="#">
-                                            <span>December 21, 2017 at 2:34 am - </span>
-                                        </a>
-                                        <a class="comment-reply-link" href="#" aria-label="Reply to A WordPress Commenter">Reply</a>
-                                    </header>
-                                    <section class="comment-content comment">
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-                                        </p>
-                                    </section>
-                                </article>
-                            </li>
-                        </ol>
-                    </div>
-                    <h5 class="comment-reply-title mb-4">Leave a comment</h5>
-
-                    <form class="form-fields-bg-transparent">
-                        <div class="form-row  mb-15px">
-                            <div class="form-group col-md-12">
-                                <textarea rows="8" name="comment" class="form-control validate-required" placeholder="Your Comment"></textarea>
-                            </div>
-                        </div>
-                        <div class="row mb-15px">
-                            <div class="form-group col-md-4">
-                                <input id="name" type="text" class="form-control validate-required" placeholder="Your name">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input id="email" type="email" name="Email" class="form-control validate-required validate-email" placeholder="Your email">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <input type="text" id="website" name="website" class="form-control" placeholder="Your website">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-12 col-xs-12">
-                                <button type="submit" class="btn btn-dark rounded-0">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
             </div>
         </div>
-    </div>
 </div>

@@ -3,7 +3,8 @@
 
         blog: null,
         settings: {
-            posts: null
+            posts: null,
+            activePost: null
         },
 
         init: function () {
@@ -36,6 +37,16 @@
             } else {
                 return this.settings.posts;
             }
+        },
+
+        getPostById: function (id) {
+            return ajaxGet('GetPostById/' + id)
+                .then(function (result) {
+                    this.settings.activePost = JSON.parse(result);
+                }.bind(this))
+                .catch(function () {
+                    // An error occurred
+                });
         }
 
     };

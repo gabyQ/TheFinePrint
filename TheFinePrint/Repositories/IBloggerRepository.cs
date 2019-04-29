@@ -60,14 +60,13 @@ namespace Blogger.Repository
                 Id = gPost.Id,
                 Title = gPost.Title,
                 Content = gPost.Content,
-                ContentPreview = gPost.Content?.Length > 500 ? gPost.Content.Substring(0, 500) : gPost.Content,
                 Category = gPost.Labels?.Count > 0 ? gPost.Labels[0] : null,
                 Author = gPost.Author,
                 PublishedDate = gPost.Published?.ToString("MMMM dd, yyyy"),
                 UpdatedDate = gPost.Updated?.ToString("MMMM dd, yyyy"),
                 NumComments = gPost.Replies.TotalItems ?? 0,
                 CommentUrl = gPost.Replies.SelfLink,
-                PostUrl = "",
+                PostUrl = "/Content/" + gPost.Id,
                 ImageUrl = gPost.Images?.Count > 0 ? gPost.Images[0].Url : "/images/blog-1.jpg",
                 Labels = gPost.Labels
             };

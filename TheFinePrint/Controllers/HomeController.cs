@@ -29,6 +29,22 @@ namespace TheFinePrint.Controllers
             return View();
         }
 
+        public IActionResult Category(string categoryName)
+        {
+            ViewData["Message"] = categoryName;
+            ViewData["Category"] = categoryName;
+
+            return View("~/Views/Blog/Category.cshtml");
+        }
+
+        public IActionResult Content(string id)
+        {
+            ViewData["Message"] = "Content";
+            ViewData["ContentId"] = id;
+
+            return View("~/Views/Blog/Content.cshtml");
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

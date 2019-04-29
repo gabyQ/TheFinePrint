@@ -3,8 +3,7 @@
 }
 
 
-<div id="wrapper">
-
+<div>
     <!-- Main -->
     <section id="main">
         <div id="main-carousel" class="carousel slide" data-ride="carousel">
@@ -31,13 +30,13 @@
     </section>
 
 
-    <section id="blog" class="row tiles" data-bind="foreach: postsPreview">
-        <article class="col-sm-4">
+    <section id="blog" data-bind="foreach: postsPreview" class="tiles flex-container flex-spacing">
+        <article>
             <span class="image">
                 <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="content-image">
             </span>
             <a data-bind="attr: {href: postUrl}">
-                <h2 data-bind="text: title"></h2>
+                <h3 data-bind="text: title"></h3>
                 <div class="content">
                     <p data-bind="subtitle"></p>
                 </div>
@@ -46,33 +45,31 @@
                 <span data-bind="text: publishedDate"></span> | <span data-bind="text: category"></span>
             </span>
         </article>
-
     </section>
 
-    <section id="articles" class="row">
+    <section id="articles">
         <div data-bind="foreach: posts" class="col-sm-8">
             <article class="article-vertical">
                 <span class="preview-post-image-md">
                     <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="content-image">
                 </span>
-                <h1 class="preview-post-title">
+                <h1 class="preview-post-title centered-text">
                     <a data-bind="attr: {href: postUrl}, text: title"></a>
                 </h1>
-                <div class="preview-post-header">
+                <div class="separated-list-item centered-text">
                     <span class="preview-post-category">
-                        <a href="attr: {href: categoryUrl}, text: category"></a>
+                        <a onclick="navigateToCategory(this)" data-bind="text: category"></a>
                     </span>
-                    <span class="preview-post-date" data-bind="text: publishedDate"></span>
+                    |<span class="preview-post-date" data-bind="text: publishedDate"></span>
                 </div>
-                <div class="preview-post-content">
-                    <p data-bind="html: contentPreview"></p>
+                <div>
+                    <p data-bind="html: content" class="preview-post-content"></p>
                 </div>
                 <div class="preview-post-footer">
                     <div class="row">
                         <div class="col-md-6">
-                            <a class="post-read-more d-block" href="attr: {href: postUrl}">
+                            <a class="border-link" data-bind="attr: {href: postUrl}">
                                 Read More
-                                <i class="far fa-long-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
                     </div>
@@ -84,25 +81,30 @@
                 <div class="coloured-panel">
                     <h3>Categories</h3>
                     <ul data-bind="foreach: categories">
-                        <li data-bind="text: $data" class="separated-list-item"></li>
+                        <li class="separated-list-item">
+                            <a data-bind="text: $data" onclick="navigateToCategory(this)"></a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
             <div class="side-container">
-                <h3>About Author</h3>                
+                <h3 class="separated-list-item">About Author</h3>                
                 <div>
                     <div>
-                        <img class="content-image" src="https://res.cloudinary.com/schmopera/image/upload/v1545409169/media/webhook-uploads/1450541021128/Jennifer-Nichols.jpg.jpg">
+                        <img id="author-img" class="content-image" src="https://res.cloudinary.com/schmopera/image/upload/v1545409169/media/webhook-uploads/1450541021128/Jennifer-Nichols.jpg.jpg">
                     </div>
                     <div class="author-description">
-                        <p>Jennifer Nichols is awesome!</p>
+                        <p>
+                            Jennifer Nichols is a choreographer, professional dancer, and founder/director of the elite ballet fitness program, The Extension Method™, and Co-Owner of its affiliate dance retreat company, Extend Retreats.
+                        <p>
+                        <a class="border-link">Read More</a>
                     </div>
                     <div class="author-social">
-                        <span class="social-icon-wrap"><a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><i class="fa-facebook"></i></a></span>
-                        <span class="social-icon-wrap"><a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><i class="fa-instagram"></i></a></span>
-                        <span class="social-icon-wrap"><a href="https://www.extensionmethod.com/" target="_blank" title="Web"><i class="fa-browser"></i></a></span>
-                        <span class="social-icon-wrap"><a href="http://twitter.com/codevibrant" target="_blank" title="Twitter"><i class="fa-twitter"></i></a></span>
+                        <a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                        <a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                        <a href="https://www.extensionmethod.com/" target="_blank" title="Web"><span class="fa fa-globe"></span></a>
+                        <a href="https://www.youtube.com/channel/UCv5zaYkxa7SCXepCGnIWmjQ" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
                     </div><!-- .author-social -->
                 </div><!-- .author-bio-wrap -->
             </div>
@@ -110,4 +112,3 @@
     </section>
 </div>
 
-<script src="~/js/home/home.js"></script>

@@ -6,11 +6,13 @@
     <title>The Fine Print - @ViewData["Title"]</title>
 
     <environment include="Development">
+        <link rel="stylesheet" href="~/css/fontawesome.min.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/main.css" />
     </environment>
     <environment exclude="Development">
+        <link rel="stylesheet" href="~/css/fontawesome.min.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/main.css" />
@@ -18,11 +20,12 @@
 
     <script src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
     <script src="@Url.Content("~/lib/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/js/fontawesome.min.js")"></script>
     <script src="@Url.Content("~/js/knockout-3.5.0.js")"></script>
     <script src="@Url.Content("~/js/global.js")"></script>
     <script src="@Url.Content("~/js/blogger.js")"></script>
 </head>
-<body>
+<body id="body">
     <header id="header">
         <div id="sticky-wrapper" class="sticky-header">
             <ul class="flex-container flex-center">
@@ -31,12 +34,12 @@
                         <li id="side-nav-button"><a href="#" class="fa fa-bars"></a></li>
                     </ul>
                 </li>
-                <li id="header-logo" class="flex-centered centered-text">
+                <li id="header-logo" class="flex-centered centered-text" onclick="navigateHome()">
                     <h1>THE FINE PRINT</h1>
                     <span class="avatar"></span>
                     <p class="header-subtext">Under the surface. Above the noise.</p>
                 </li>
-                <li class="flex-right-align">
+                <li class="flex-right-align" hidden>
                     <ul class="icons">
                         <li><a href="#" class="fa-search">Search</a></li>
                     </ul>
@@ -48,22 +51,55 @@
 
     <div id="side-bar" class="side-nav">
         <a href="#" id="close-nav-button" class="closebtn">&times;</a>
+        <a href="/">Home</a>
         <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
+        <div data-bind="foreach: categories">
+            <a onclick="navigateToCategory(this)" data-bind="text: $data"></a>
+        </div>
         <a href="#">Contact</a>
     </div>
 
-    @RenderBody()
+    <div id="wrapper">
+        @RenderBody()
+    </div>
 
     <!-- Footer -->
-    <footer id="footer">
-        <ul class="copyright">
-            <li>© THE FINE PRINT</li>
-            <li>
-                <script type="text/javascript">document.write(new Date().getFullYear());</script>
-            </li>
-        </ul>
+    <footer id="footer" class="column">
+
+        <div id="top-footer" class="flex-container flex-spacing">
+            <section class="widget">
+                <h2 class="widget-title">Latest Posts</h2>
+                <ul data-bind="foreach: latestPosts">
+                    <li class="spaced-list-item">
+                        <span class="fa fa-chevron-right"></span>
+                        <a data-bind="attr: {href: postUrl}, text: title"></a>
+                    </li>
+                </ul>
+            </section>
+            <section class="widget">
+                <h2 class="widget-title">Category</h2>
+                <ul data-bind="foreach: categories">
+                    <li class="spaced-list-item">
+                        <span class="fa fa-folder"></span>
+                        <a onclick="navigateToCategory(this)" data-bind="text: $data"></a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="flex-container widget">
+            <div class="full-width">
+                <h1 class="separated-list-item">THE FINE PRINT</h1>
+                <p class="header-subtext inline">Under the surface. Above the noise.</p>
+
+                <div class="author-social inline float-right">
+                    <a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                    <a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                    <a href="https://www.extensionmethod.com/" target="_blank" title="Web"><span class="fa fa-globe"></span></a>
+                    <a href="https://www.youtube.com/channel/UCv5zaYkxa7SCXepCGnIWmjQ" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
+                </div><!-- .cv-social-icons-wrapper -->
+            </div>
+        </div>
     </footer>
 
     <environment include="Development">
@@ -72,7 +108,8 @@
     <environment exclude="Development">
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script src="~/js/posts/postViewModel.js"></script>
+    <script src="~/js/home/home.js"></script>
     @RenderSection("Scripts", required: false)
 
 </body>

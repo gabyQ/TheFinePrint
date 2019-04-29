@@ -43,6 +43,14 @@ namespace TheFinePrint
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
                 routes.MapRoute(
+                    name: "Category",
+                    template: "Category/{*categoryName}",
+                    defaults: new { controller = "Home", action = "Category" });
+                routes.MapRoute(
+                    name: "Content",
+                    template: "Content/{*id}",
+                    defaults: new { controller = "Home", action = "Content" });
+                routes.MapRoute(
                     name: "DefaultApi",
                     template: "api/{controller}/{action}/{id?}",
                     defaults: new { controller = "BlogApi", action = "GetBlogAsync" });
