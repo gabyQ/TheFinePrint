@@ -9,7 +9,7 @@
 
         init: function () {
             // Get the blog to get the associated posts
-            return this.getBlog();
+            this.blog = this.getBlog();
         },
 
         getBlog: function () {
@@ -21,12 +21,17 @@
                     }.bind(this))
                     .catch(function () {
                         // An error occurred
+                        this.blog = null;
+                        reject();
                     });
             });
         }, 
 
         getBlogPosts: function () {
-            if (this.settings.posts == null) {
+            if (this.blog === null) {
+                return Promise.reject("The blog could not be found.");
+            }
+            if (this.settings.posts === null) {
                 return ajaxGet('GetPosts')
                     .then(function (result) {
                         this.settings.posts = JSON.parse(result);

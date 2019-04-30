@@ -8,7 +8,7 @@
             homeWrapper: document.getElementById('wrapper'),
             body: document.getElementById('body'),
             activeCategory: document.getElementById('active-category') && document.getElementById('active-category').innerHTML,
-            activePost: document.getElementById('active-post') && document.getElementById('active-post').innerHTML.replace('#', '')
+            activePost: (document.getElementById('active-post') && document.getElementById('active-post').innerHTML.replace('#', ''))
         },
 
         init: function () {
@@ -33,9 +33,9 @@ var homeViewModel = function(hasActivePost) {
     self.categories = ko.observableArray([]);
     self.latestPosts = ko.observableArray([]);
     self.activeCategoryPosts = ko.observableArray([]);
-    self.activePost = ko.observable(postViewModel);
+    self.activePost = ko.observable('');
 
-    if (Blogger != null) {
+    if (Blogger !== null) {
         Blogger.getBlogPosts().then(function () {
             let posts = Blogger.settings.posts;
             self.posts(posts || []);
@@ -48,8 +48,14 @@ var homeViewModel = function(hasActivePost) {
                 self.activePost(activePost);
                 return activePost;
             }
+            Navigation.settings.spinner.hidden = true;
             return self;
-        });
+        }).catch(function () {
+            console.log('Error loading blog.');
+            Navigation.settings.spinner.hidden = true;
+            ko.renderTemplate('no-data-template', self, null, Home.settings.homeWrapper, 'replaceChildren');
+            return;
+        }.bind(this));
     }
     
 };

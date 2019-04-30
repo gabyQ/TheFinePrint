@@ -9,13 +9,13 @@
         <div id="main-carousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                    <img class="d-block w-100" src="~/images/blog-1.jpg" alt="First slide">
+                    <img class="d-block w-100" src="~/images/beautiful-desktop-wallpaper-frost-2088238.jpg" alt="First slide">
                 </div>
                 <div class="item">
-                    <img class="d-block w-100" src="~/images/pb7.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="~/images/berries-bowl-bowl-of-fruit-1145977.jpg" alt="Second slide">
                 </div>
                 <div class="item">
-                    <img class="d-block w-100" src="~/images/scotland.jpg" alt="Third slide">
+                    <img class="d-block w-100" src="~/images/background-citrus-close-988861.jpg" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control left" href="#main-carousel" role="button" data-slide="prev">
@@ -30,19 +30,20 @@
     </section>
 
 
-    <section id="blog" data-bind="foreach: postsPreview" class="tiles flex-container flex-spacing">
-        <article>
-            <span class="image">
-                <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="content-image">
+    <section id="blog" data-bind="foreach: postsPreview" class="flex-container flex-spacing flex-wrap">
+        <article class="tile">
+            <span>
+                <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="tile-image-md" />
             </span>
             <a data-bind="attr: {href: postUrl}">
-                <h3 data-bind="text: title"></h3>
+                <h3 data-bind="text: title" class="centered-text"></h3>
                 <div class="content">
                     <p data-bind="subtitle"></p>
                 </div>
             </a>
             <span class="tile-label sm-text">
-                <span data-bind="text: publishedDate"></span> | <span data-bind="text: category"></span>
+                <span data-bind="text: publishedDate"></span> | 
+                <span data-bind="text: category"></span>
             </span>
         </article>
     </section>
@@ -111,4 +112,3 @@
         </div>
     </section>
 </div>
-

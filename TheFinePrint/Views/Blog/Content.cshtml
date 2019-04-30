@@ -5,56 +5,22 @@
 
 <span id="active-post" hidden>@ViewData["ContentId"]</span>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="post_img">
-                <img data-bind="attr: {src: activePost.imageUrl}" alt="The Fine Print Image" class="content-image">
-            </div>
-        </div>
+<section class="centered-text">
+    <div class="post_img">
+        <img data-bind="attr: {src: activePost().imageUrl}" alt="The Fine Print Image" class="content-image">
     </div>
-</div>
-
-<div class="container">
-    <div class="row">
-            <div>
-                <article>
-                    <h1 class="post_title">
-                        <a data-bind="text: activePost.title"></a>
-                    </h1>
-                    <div class="post_meta_top">
-                        <span class="post_meta_category">
-                            <a data-bind="text: activePost.category, attr: { href: activePost.categoryUrl }"></a>
-                        </span>
-                        <span data-bind="text: activePost.publishedDate"></span>
-                    </div>
-                    <div class="post_content">
-                        <p data-bind="html: activePost.content"></p>
-                    </div>
-                    <div>
-                        <div class="col-lg-6 text-center text-lg-left mb-10px mb-lg-0">
-                            <ul class="blog-post-tags">
-                                <li>
-                                    <a href="#" rel="tag">Branding</a>
-                                </li>
-                                <li>
-                                    <a href="#" rel="tag">Photography</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 text-center text-lg-right">
-                            <a class="post_read_more_btn mr-2" href="#">
-                                <i class="far fa-long-arrow-left fa-lg mr-2" aria-hidden="true"></i> 
-                                Previous Post
-                            </a>
-                            <a class="post_read_more_btn ml-2" href="#">
-                                Next Post
-                                <i class="far fa-long-arrow-right fa-lg ml-1" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="separator-line"></div>
-                </article>
-            </div>
+    <article>
+        <span class="post_meta_category">
+            <a data-bind="text: activePost().category, attr: { href: activePost().categoryUrl }"></a>
+        </span>
+        <h1 class="post_title">
+            <a data-bind="text: activePost().title"></a>
+        </h1>
+        <div class="post_meta_top">
+            <span data-bind="text: activePost().publishedDate"></span>
         </div>
-</div>
+        <div class="post_content">
+            <p data-bind="html: activePost().content"></p>
+        </div>
+    </article>
+</section>

@@ -26,24 +26,51 @@
     <script src="@Url.Content("~/js/blogger.js")"></script>
 </head>
 <body id="body">
+    <div id="preloader-background">
+        <div class="preloader-wrapper">
+            <div class="sk-chasing-dots">
+                <div class="sk-child sk-dot1"></div>
+                <div class="sk-child sk-dot2"></div>
+            </div>
+        </div>
+    </div>
+
     <header id="header">
-        <div id="sticky-wrapper" class="sticky-header">
-            <ul class="flex-container flex-center">
-                <li class="flex-left-align">
-                    <ul class="icons">
-                        <li id="side-nav-button"><a href="#" class="fa fa-bars"></a></li>
-                    </ul>
-                </li>
-                <li id="header-logo" class="flex-centered centered-text" onclick="navigateHome()">
-                    <h1>THE FINE PRINT</h1>
-                    <span class="avatar"></span>
-                    <p class="header-subtext">Under the surface. Above the noise.</p>
-                </li>
-                <li class="flex-right-align" hidden>
-                    <ul class="icons">
-                        <li><a href="#" class="fa-search">Search</a></li>
-                    </ul>
-                </li>
+        <div class="">
+            <div class="color-nav-header">
+                <div class="author-social inline float-right">
+                    <a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                    <a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                    <a href="https://www.extensionmethod.com/" target="_blank" title="Web"><span class="fa fa-globe"></span></a>
+                    <a href="https://www.youtube.com/channel/UCv5zaYkxa7SCXepCGnIWmjQ" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
+                </div><!-- .cv-social-icons-wrapper -->
+            </div>
+        </div>
+        @*<ul class="flex-container flex-center block">*@
+        @*<li class="flex-left-align">
+                <ul class="icons">
+                    <li id="side-nav-button"><a href="#" class="fa fa-bars"></a></li>
+                </ul>
+            </li>*@
+        <div id="header-logo" class="flex-centered centered-text" onclick="navigateHome()">
+            <h1>THE FINE PRINT</h1>
+            <span class="avatar"></span>
+            <p class="header-subtext">Under the surface. Above the noise.</p>
+        </div>
+        @*<li class="flex-right-align" hidden>
+                <ul class="icons">
+                    <li><a href="#" class="fa-search">Search</a></li>
+                </ul>
+            </li>*@
+        @*</ul>*@
+        <div id="sticky-wrapper" class="">
+            <ul class="menu-wrapper flex-center flex-container">
+                <li><a href="/">Home</a></li>
+                <li><a href="/Home/About">About</a></li>
+                <!-- ko foreach : categories -->
+                <li><a onclick="navigateToCategory(this)" data-bind="text: $data"></a></li>
+                <!-- /ko -->
+                <li hidden><a href="/Contact">Contact</a></li>
             </ul>
         </div>
     </header>
@@ -101,6 +128,27 @@
             </div>
         </div>
     </footer>
+
+    <script type="text/html" id="no-data-template">
+        <section class="error-404 not-found centered-text flex-centered">
+            <header class="page-header">
+                <h1 class="page-title">Oops! That page can’t be found.</h1>
+            </header><!-- .page-header -->
+            <div class="error-num"> 404 <span>error</span> </div>
+            <div class="page-content">
+                <p>It looks like nothing was found at this location. Maybe try one of the links below or a search?</p>
+                <div class="error-404__search">
+                    <form role="search" method="get" class="search-form" action="https://demo.codevibrant.com/wisdom-pro/">
+                        <label>
+                            <span class="screen-reader-text">Search for:</span>
+                            <input type="search" class="search-field" placeholder="Search …" value="" name="s">
+                        </label>
+                        <input type="submit" class="search-submit" value="Search">
+                    </form>
+                </div>
+            </div><!-- .page-content -->
+        </section>
+    </script>
 
     <environment include="Development">
         <script src="~/js/site.js" asp-append-version="true"></script>

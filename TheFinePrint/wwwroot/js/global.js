@@ -17,7 +17,7 @@ function ajaxPost() {
 }
 
 function getPostCategories(posts) {
-    if (posts == null) {
+    if (posts === null) {
         return [];
     }
 
@@ -49,7 +49,7 @@ function getActivePost(posts) {
         return null;
     }
     return posts.find(function (p) {
-        return p.id == activePostId;
+        return p.id === activePostId;
     });
 }
 
@@ -60,4 +60,8 @@ function navigateHome() {
 function navigateToCategory(clicked) {
     let category = clicked.innerHTML;
     window.location.href = '/Category/' + category;
+}
+
+function showNotFoundPage() {
+
 }

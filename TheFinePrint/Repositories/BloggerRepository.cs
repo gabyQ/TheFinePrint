@@ -110,7 +110,9 @@ namespace Blogger.Repository
 
         public async Task<IEnumerable<Post>> GetPostsAsync(string blogId)
         {
-            var posts = await service.Posts.List(blogId).ExecuteAsync();
+            var listRequest = service.Posts.List(blogId);
+            listRequest.FetchImages = true;
+            var posts = await listRequest.ExecuteAsync();
             return posts.Items
                 .OrderByDescending(p => p.Published)
                 .Select(p => Post.ToPost(p))
