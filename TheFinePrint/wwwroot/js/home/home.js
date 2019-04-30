@@ -46,6 +46,7 @@ var homeViewModel = function(hasActivePost) {
             if (hasActivePost) {
                 let activePost = getActivePost(posts);
                 self.activePost(activePost);
+                Navigation.settings.spinner.hidden = true;
                 return activePost;
             }
             Navigation.settings.spinner.hidden = true;
@@ -56,6 +57,8 @@ var homeViewModel = function(hasActivePost) {
             ko.renderTemplate('no-data-template', self, null, Home.settings.homeWrapper, 'replaceChildren');
             return;
         }.bind(this));
+    } else {
+        Navigation.settings.spinner.hidden = true;
     }
     
 };
