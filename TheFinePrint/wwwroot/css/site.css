@@ -51,7 +51,21 @@
     .tile {
         max-width: 100%!important;
     }
+
+    .post_content img {
+        max-width: 700px;
+        width: 400px;
+    }
 }
+
+@media screen and (max-width: 450px) {
+    .post_content img {
+        max-width: 400px;
+        width: 300px;
+        max-height: 300px;
+    }
+}
+
 
 .sm-text {
     font-size: 12px;

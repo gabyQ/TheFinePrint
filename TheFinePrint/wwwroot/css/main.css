@@ -29,6 +29,7 @@ body section {
     max-width: 1300px;
     margin-bottom: 50px!important;
     width: 100%;
+    overflow: hidden;
 }
 
 ol, ul {
