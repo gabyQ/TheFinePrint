@@ -5,6 +5,10 @@
     font-family: 'FontAwesome';
     src: url(../fonts/FontAwesome.otf);
 }
+@font-face {
+    font-family: 'Montserrat';
+    src: url(../fonts/Montserrat-Regular.ttf);
+}
 
 /* Reset */
 
@@ -136,7 +140,7 @@ body {
 
 body, input, select, textarea {
     color: #414f57;
-    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-family: Montserrat, Helvetica, sans-serif;
     font-size: 14pt;
     font-weight: 300;
     line-height: 2;
@@ -176,7 +180,7 @@ a {
     }
 
     a:hover {
-        color: rgba(85,172,238,1);
+        color: rgb(230, 230, 250);
     }
 
 strong, b {
@@ -319,7 +323,7 @@ textarea {
     input[type="tel"]:focus,
     select:focus,
     textarea:focus {
-        border-color: #ff7496;
+        border-color: #E6E6FA;
     }
 
 .select-wrapper {
@@ -420,13 +424,13 @@ input[type="radio"] {
 
     input[type="checkbox"]:checked + label:before,
     input[type="radio"]:checked + label:before {
-        color: #ff7496;
+        color: #E6E6FA;
         content: '\f00c';
     }
 
     input[type="checkbox"]:focus + label:before,
     input[type="radio"]:focus + label:before {
-        border-color: #ff7496;
+        border-color: #E6E6FA;
     }
 
     input[type="checkbox"] + label:before {
@@ -646,8 +650,8 @@ button,
     input[type="button"]:hover,
     button:hover,
     .button:hover {
-        border-color: #ff7496;
-        color: #ff7496 !important;
+        border-color: #E6E6FA;
+        color: #E6E6FA !important;
     }
 
     input[type="submit"].icon,

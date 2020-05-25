@@ -27,85 +27,67 @@
     </div>
 </section>
 
-
-<section id="blog" data-bind="foreach: postsPreview" class="flex-container flex-spacing flex-wrap">
-    <article class="tile">
-        <span>
-            <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="tile-image-md" />
-        </span>
-        <a data-bind="attr: {href: postUrl}">
-            <h3 data-bind="text: title" class="centered-text"></h3>
-            <div class="content">
-                <p data-bind="subtitle"></p>
-            </div>
-        </a>
-        <span class="tile-label sm-text">
-            <span data-bind="text: publishedDate"></span> | 
-            <span data-bind="text: category"></span>
-        </span>
-    </article>
-</section>
-
 <section id="articles">
-    <div data-bind="foreach: posts" class="col-sm-8">
-        <article class="article-vertical">
-            <span class="preview-post-image-md">
-                <img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="content-image">
-            </span>
-            <h1 class="preview-post-title centered-text">
-                <a data-bind="attr: {href: postUrl}, text: title"></a>
-            </h1>
-            <div class="separated-list-item centered-text">
-                <span class="preview-post-category">
-                    <a onclick="navigateToCategory(this)" data-bind="text: category"></a>
+    <div class="col-sm-9">
+        <header class="major">
+            <h2>Latest Posts</h2>
+        </header>
+        <div data-bind="foreach: posts" class="posts">
+            <article class="article-vertical">
+                <a href="#" class="image"><img data-bind="attr: {src: imageUrl}" alt="IMAGE" class="content-image"></a>
+                <span class="tile-label sm-text">
+                    <span data-bind="text: publishedDate"></span> |
+                    <span data-bind="text: category"></span>
                 </span>
-                |<span class="preview-post-date" data-bind="text: publishedDate"></span>
-            </div>
-            <div>
+                <h3><a data-bind="attr: {href: postUrl}, text: title"></a></h3>
                 <p data-bind="html: content" class="preview-post-content"></p>
-            </div>
-            <div class="preview-post-footer">
-                <div class="row">
-                    <div class="col-md-6">
-                        <a class="border-link" data-bind="attr: {href: postUrl}">
-                            Read More
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </article>
+                <ul class="actions">
+                    <li><a data-bind="attr: {href: postUrl}" class="button">Read More</a></li>
+                </ul>
+            </article>
+        </div>
     </div>
-    <div class="col-sm-4">
-        <div class="side-container">
-            <div class="coloured-panel">
-                <h3>Categories</h3>
+
+    <div class="col-sm-3">
+        <section class="coloured-panel">
+            <header class="major">
+                <h2>Categories</h2>
+            </header>
                 <ul data-bind="foreach: categories">
                     <li class="separated-list-item">
                         <a data-bind="text: $data" onclick="navigateToCategory(this)"></a>
                     </li>
                 </ul>
-            </div>
-        </div>
 
-        <div class="side-container">
-            <h3 class="separated-list-item">About Author</h3>                
+            @*<div class="mini-posts" data-bind="foreach: categories">
+                    <article>
+                        <a onclick="navigateToCategory(this)" class="image">
+                            <img src="~/images/scotland.jpg" alt="" />
+                        </a>
+                        <p data-bind="text: $data"></p>
+                    </article>
+                </div>*@
+        </section>
+    </div>
+    <div class="side-container">
+        <h3 class="separated-list-item">About Author</h3>
+        <div>
             <div>
-                <div>
-                    <img id="author-img" class="content-image" src="https://res.cloudinary.com/schmopera/image/upload/v1545409169/media/webhook-uploads/1450541021128/Jennifer-Nichols.jpg.jpg">
-                </div>
-                <div class="author-description">
-                    <p>
-                        Jennifer Nichols is a choreographer, professional dancer, and founder/director of the elite ballet fitness program, The Extension Method™, and Co-Owner of its affiliate dance retreat company, Extend Retreats.
-                    <p>
+                <img id="author-img" class="content-image" src="https://res.cloudinary.com/schmopera/image/upload/v1545409169/media/webhook-uploads/1450541021128/Jennifer-Nichols.jpg.jpg">
+            </div>
+            <div class="author-description">
+                <p>
+                    Jennifer Nichols is a choreographer, professional dancer, and founder/director of the elite ballet fitness program, The Extension Method™, and Co-Owner of its affiliate dance retreat company, Extend Retreats.
+                <p>
                     <a class="border-link">Read More</a>
-                </div>
-                <div class="author-social">
-                    <a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
-                    <a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
-                    <a href="https://www.extensionmethod.com/" target="_blank" title="Web"><span class="fa fa-globe"></span></a>
-                    <a href="https://www.youtube.com/channel/UCv5zaYkxa7SCXepCGnIWmjQ" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
-                </div><!-- .author-social -->
-            </div><!-- .author-bio-wrap -->
-        </div>
+            </div>
+            <div class="author-social">
+                <a href="https://www.facebook.com/jennifer.nichols.927543" target="_blank" title="Facebook"><span class="fa fa-facebook"></span></a>
+                <a href="https://www.instagram.com/jennifernichols_dance/" target="_blank" title="Instagram"><span class="fa fa-instagram"></span></a>
+                <a href="https://www.extensionmethod.com/" target="_blank" title="Web"><span class="fa fa-globe"></span></a>
+                <a href="https://www.youtube.com/channel/UCv5zaYkxa7SCXepCGnIWmjQ" target="_blank" title="YouTube"><span class="fa fa-youtube"></span></a>
+            </div><!-- .author-social -->
+        </div><!-- .author-bio-wrap -->
+    </div>
     </div>
 </section>

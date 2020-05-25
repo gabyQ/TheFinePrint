@@ -10,12 +10,14 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/editorial.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="~/css/fontawesome.min.css" />
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/main.css" />
+        <link rel="stylesheet" href="~/css/editorial.css" />
     </environment>
 
     <script src="@Url.Content("~/lib/jquery/dist/jquery.js")"></script>
@@ -95,7 +97,7 @@
 
         <div id="top-footer" class="flex-container flex-spacing">
             <section class="widget">
-                <h2 class="widget-title">Latest Posts</h2>
+                <h5 class="widget-title">Latest Posts</h5>
                 <ul data-bind="foreach: latestPosts">
                     <li class="spaced-list-item">
                         <span class="fa fa-chevron-right"></span>
@@ -104,7 +106,7 @@
                 </ul>
             </section>
             <section class="widget">
-                <h2 class="widget-title">Category</h2>
+                <h5 class="widget-title">Category</h5>
                 <ul data-bind="foreach: categories">
                     <li class="spaced-list-item">
                         <span class="fa fa-folder"></span>

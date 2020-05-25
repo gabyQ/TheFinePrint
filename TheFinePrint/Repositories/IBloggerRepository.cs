@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TheFinePrint.Utils;
 using static Google.Apis.Blogger.v3.Data.Post;
 
 namespace Blogger.Repository
@@ -62,8 +63,8 @@ namespace Blogger.Repository
                 Content = gPost.Content,
                 Category = gPost.Labels?.Count > 0 ? gPost.Labels[0] : null,
                 Author = gPost.Author,
-                PublishedDate = gPost.Published?.ToString("MMMM dd, yyyy"),
-                UpdatedDate = gPost.Updated?.ToString("MMMM dd, yyyy"),
+                PublishedDate = gPost.Published?.ToString(new FormatProvider()),
+                UpdatedDate = gPost.Updated?.ToString(new FormatProvider()),
                 NumComments = gPost.Replies.TotalItems ?? 0,
                 CommentUrl = gPost.Replies.SelfLink,
                 PostUrl = "/Content/" + gPost.Id,

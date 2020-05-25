@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net;
 
 namespace TheFinePrint
 {
@@ -18,41 +20,53 @@ namespace TheFinePrint
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+            services.AddRazorPages();
+            
+            new MvcOptions().EnableEndpointRouting = false;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            if (env.EnvironmentName.Equals("Debug"))
             {
-                app.UseBrowserLink();
+                app.UseDirectoryBrowser();
                 app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
 
             app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
 
-            app.UseMvc(routes =>
+            app.UseEndpoints(routes =>
             {
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                routes.MapControllerRoute(
                     name: "Category",
-                    template: "Category/{*categoryName}",
+                    pattern: "Category/{*categoryName}",
                     defaults: new { controller = "Home", action = "Category" });
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "Content",
-                    template: "Content/{*id}",
+                    pattern: "Content/{*id}",
                     defaults: new { controller = "Home", action = "Content" });
-                routes.MapRoute(
+                routes.MapControllerRoute(
                     name: "DefaultApi",
-                    template: "api/{controller}/{action}/{id?}",
+                    pattern: "api/{controller}/{action}/{id?}",
                     defaults: new { controller = "BlogApi", action = "GetBlogAsync" });
             });
         }
